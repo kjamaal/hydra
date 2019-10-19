@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools >= 68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+dynamic = ["version"]
+name = "hydra"
+dependencies = [
+    "click"
+]
+requires-python = ">= 3.11"
+authors = [
+    {name = "Jamaal Kirkpatrick"}
+]
+description = "project initializer"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 3 - Alpha"
+]
+
+[project.scripts]
+hydra-cli = "hydra.cli.main:hydra"
+
+[tool.setuptools.dynamic]
+version = {attr = "hydra.VERSION"}
+
+[tool.setuptools.packages.find]

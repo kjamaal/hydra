@@ -6,12 +6,10 @@ chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
-coverage==7.5.0
 distlib==0.3.8
 docutils==0.20.1
 dynaconf==3.2.4
 filelock==3.13.1
-hydra @ file:///Users/jkirkpatrick/hydra/dist/hydra-0.0.dev2.tar.gz#sha256=e6014cf9403e24c5bfc09b1e164cedbd51c44260316ca1509ca9eb73dbfdba1a
 idna==3.6
 importlib-metadata==7.0.0
 iniconfig==2.0.0
@@ -32,8 +30,6 @@ Pygments==2.17.2
 pyproject-api==1.6.1
 pyproject_hooks==1.0.0
 pytest==7.4.4
-pytest-cov==5.0.0
-pytest-mock==3.14.0
 readme-renderer==42.0
 requests==2.31.0
 requests-toolbelt==1.0.0

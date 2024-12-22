@@ -1,0 +1,11 @@
+[run]
+omit = 
+    **/__main__.py
+    **/__init__.py
+
+[report]
+exclude_also =
+    pass
+    def create(ctx)
+    if __name__
+    hydra(obj={})

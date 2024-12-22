@@ -37,6 +37,6 @@ rfc3986==2.0.0
 rich==13.7.0
 tox==4.11.4
 twine==4.0.2
-urllib3==2.1.0
+urllib3==2.2.2
 virtualenv==20.25.0
 zipp==3.17.0

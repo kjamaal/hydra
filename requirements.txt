@@ -45,4 +45,4 @@ twine==4.0.2
 urllib3==2.2.2
 virtualenv==20.25.0
 wheel==0.45.1
-zipp==3.17.0
+zipp==3.19.1

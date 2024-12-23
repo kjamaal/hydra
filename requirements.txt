@@ -42,7 +42,7 @@ rich==13.7.0
 secretstorage==3.3.3
 tox==4.11.4
 twine==4.0.2
-urllib3==2.1.0
+urllib3==2.2.2
 virtualenv==20.25.0
 wheel==0.45.1
 zipp==3.17.0

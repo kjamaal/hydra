@@ -16,7 +16,8 @@ parser.add_argument(
 parser.add_argument(
     "--version-bump",
     type=str,
-    choices=['major', 'minor', 'patch', 'dev']
+    choices=['major', 'minor', 'patch', 'dev'],
+    help="which semantic level should be bumped in the build"  # noqa
 )
 
 parser.add_argument(
@@ -43,21 +44,19 @@ if args.build:
     if not args.version_bump:
         print("\nmanage_project: Build aborted. A new version level is required. Use --version-bump\n")  # noqa
     else:
-        #TODO: fetch latest version and increment according to version bump
         response = requests.get(
             'https://api.github.com/repos/kjamaal/hydra/releases/latest'
         )
         with open("hydra/__init__.py", "r") as mod:
             this_version = mod.read().split("= ")[1].replace("\"", "")
             if v(f"{this_version}") > v(response.json()["name"]):
-                print(f"build {this_version}")
-                    #subprocess.run(
-                    #    [
-                    #        "python",
-                    #        "-m",
-                    #        "build"
-                    #    ]
-                    #)
+                subprocess.run(
+                    [
+                        "python",
+                        "-m",
+                        "build"
+                    ]
+                )
             else:
                 print("\nmanage_project: Build aborted. Currently Released version is higher. You should rebase it in and try to build/test again.")  # noqa
 else:

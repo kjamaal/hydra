@@ -19,6 +19,9 @@ jobs:
           python-version: 3.11
       - name: checkout
         uses: actions/checkout@v2
+      - name: Remove existing .tox
+        run: |
+          rm -rf .tox/
       - name: run tox
         id: tox
         uses: paolorechia/pox@v1.0

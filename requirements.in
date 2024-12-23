@@ -31,7 +31,7 @@ pyproject-api==1.6.1
 pyproject_hooks==1.0.0
 pytest==7.4.4
 readme-renderer==42.0
-requests==2.31.0
+requests==2.32.2
 requests-toolbelt==1.0.0
 rfc3986==2.0.0
 rich==13.7.0

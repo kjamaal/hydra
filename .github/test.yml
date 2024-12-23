@@ -1,0 +1,19 @@
+name: Test Hydra
+
+on:
+  push:
+    branches:
+      - *
+    branches-ignore:
+      - 'master'
+      - 'main'
+  pull_request:
+    types:
+      - created
+
+jobs:
+  unit:
+  regression:
+  integration:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'

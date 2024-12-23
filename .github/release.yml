@@ -1,9 +1,11 @@
 name: Release Hydra
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  
   build:
     name: Build distribution
     runs-on: ubuntu-latest

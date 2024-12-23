@@ -12,6 +12,12 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "--version-bump",
+    type=str,
+    choices=['major', 'minor', 'patch', 'dev']
+)
+
+parser.add_argument(
     "--tox",
     action="store_true",
     help="run tox before building"
@@ -31,7 +37,7 @@ else:
 
 if args.build:
     print("Building hydra project...")
-    #TODO: import pyproject.toml and update values via configparser start with version  # noqa
+    #TODO: fetch latest version and increment according to version bump
 
     subprocess.run(
         [

@@ -1,7 +1,7 @@
-black==23.12.1
+black==24.3.0
 build==1.0.3
 cachetools==5.3.2
-certifi==2023.11.17
+certifi==2024.7.4
 chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
@@ -10,7 +10,7 @@ distlib==0.3.8
 docutils==0.20.1
 dynaconf==3.2.4
 filelock==3.13.1
-idna==3.6
+idna==3.7
 importlib-metadata==7.0.0
 iniconfig==2.0.0
 jaraco.classes==3.3.0
@@ -31,12 +31,12 @@ pyproject-api==1.6.1
 pyproject_hooks==1.0.0
 pytest==7.4.4
 readme-renderer==42.0
-requests==2.31.0
+requests==2.32.2
 requests-toolbelt==1.0.0
 rfc3986==2.0.0
 rich==13.7.0
 tox==4.11.4
 twine==4.0.2
-urllib3==2.1.0
+urllib3==2.2.2
 virtualenv==20.25.0
-zipp==3.17.0
+zipp==3.19.1

@@ -1,0 +1,36 @@
+name: Test Hydra
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+      - 'main'
+  pull_request:
+    types:
+      - created
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    name: unit tests
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Remove existing .tox
+        run: |
+          rm -rf .tox/
+      - name: run tox
+        id: tox
+        uses: paolorechia/pox@v1.0
+        with:
+          tox_env: 'py311'
+      - name: check for success
+        run: |
+          echo "Units tests have passed: ${{steps.tox.outputs.success_flag}}"
+  #regression:
+  #integration:
+  #  runs-on: ubuntu-latest
+  #  if: github.event_name == 'pull_request'

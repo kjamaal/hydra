@@ -60,6 +60,6 @@ if args.build:
             else:
                 print("\nmanage_project: Build aborted. Currently Released version is higher. You should rebase it in and try to build/test again.")  # noqa
 else:
-    print("\nmanage_project: Running without Building. Give --build to build the hydra project")  # noqa
+    print("\nmanage_project: Running without Building. Use --build to build the hydra project")  # noqa
 
     #TODO: cleanup previous build artifacts in dist/

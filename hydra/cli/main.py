@@ -1,8 +1,7 @@
-import os
 import hydra as h
 import click
-from hydra.modules import environment  # , project
-from hydra.config import settings
+from hydra.commands import framework as f
+from hydra.config import settings as config
 
 
 @click.group(invoke_without_command=True)
@@ -45,18 +44,15 @@ def version(ctx):
 @click.pass_context
 def ansible(ctx, yes_all):
     """Create an ansible project"""
-    perms = environment.fetch_file_system_permissions(os.getcwd())
     prompt = "y"
 
-    if not perms and not yes_all:
+    if not f.validate_dependencies() and not yes_all:
         prompt = input(
             "This directory is not empty, would you like to continue anyway? (y/n)"  # noqa
         )
-    elif perms == "is not directory":
-        print("is not directory")
 
-    if perms or prompt == "y" or yes_all:
-        environment.write_project_layout(settings.from_env("ansible").paths)
+    if f.validate_dependencies() or prompt == "y" or yes_all:
+        f.write_project_layout(config.from_env("ansible").paths)
 
 
 @create.command()

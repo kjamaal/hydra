@@ -1,0 +1,7 @@
+mock==5.1.0
+build==1.2.2.post1
+click==8.1.8
+packaging==24.2
+pip-tools==7.4.1
+pyproject_hooks==1.2.0
+requests==2.32.3

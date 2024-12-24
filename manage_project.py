@@ -50,6 +50,7 @@ if args.build:
         with open("hydra/__init__.py", "r") as mod:
             this_version = mod.read().split("= ")[1].replace("\"", "")
             if v(f"{this_version}") > v(response.json()["name"]):
+                #TODO: see if you can use the build module instead of subprocess  # noqa
                 subprocess.run(
                     [
                         "python",

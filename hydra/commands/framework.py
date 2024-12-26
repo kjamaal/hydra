@@ -7,4 +7,4 @@ def validate_dependencies():
 
 def write_project_layout(layout):
     for d in layout:
-        os.mkdir(os.path.join(os.getcwd(), d), exist_ok=True)
+        os.makedirs(os.path.join(os.getcwd(), d))

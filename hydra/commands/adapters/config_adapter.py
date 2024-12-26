@@ -1,4 +1,7 @@
-def fetch_project_config(project_type):
+from hydra.config import settings
+
+
+def fetch_project_config(project):
     """
     Return default configuration for the given project type
 
@@ -6,4 +9,4 @@ def fetch_project_config(project_type):
 
     project_type - str - type name of the selected project to build
     """
-    return True
+    return {"paths": settings.from_env(project)["paths"]}

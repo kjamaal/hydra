@@ -1,7 +1,7 @@
 import hydra as h
 import click
 from hydra.commands import framework as f
-from hydra.config import settings as config
+from hydra.commands.adapters import config_adapter as config
 
 
 @click.group(invoke_without_command=True)
@@ -15,20 +15,6 @@ def hydra(ctx):
 @click.pass_context
 def create(ctx):
     """Create the selected project type"""
-    ctx.ensure_object(dict)
-
-
-@hydra.group(invoke_without_command=True)
-@click.pass_context
-def patterns(ctx):
-    """List project patterns"""
-    ctx.ensure_object(dict)
-
-
-@hydra.group(invoke_without_command=True)
-@click.pass_context
-def list(ctx):
-    """List all available single project types"""
     ctx.ensure_object(dict)
 
 
@@ -52,66 +38,7 @@ def ansible(ctx, yes_all):
         )
 
     if f.validate_dependencies() or prompt == "y" or yes_all:
-        f.write_project_layout(config.from_env("ansible").paths)
-
-
-@create.command()
-@click.option("-a")
-@click.pass_context
-def cdk(ctx):
-    """Create a cdk project"""
-    pass
-
-
-@create.command()
-@click.option("-a")
-@click.pass_context
-def virtualbox(ctx):
-    """Create a VirtualBox project"""
-    pass
-
-
-@create.command()
-@click.option("-a")
-@click.pass_context
-def serverless_framework():
-    """Create a serverless framework project"""
-    pass
-
-
-@create.command()
-@click.option("-a")
-@click.pass_context
-def SAM():
-    """Create a SAM cli project"""
-    pass
-
-
-@patterns.command()
-@click.option("-a")
-@click.pass_context
-def python_ml():
-    """
-    Create a Machine Learning project using Python
-    tooling
-    """
-    pass
-
-
-@list.command()
-@click.option("-a")
-@click.pass_context
-def project_types(ctx):
-    """List project types"""
-    pass
-
-
-@list.command()
-@click.option("-a")
-@click.pass_context
-def project_layouts(ctx):
-    """List project file system layouts"""
-    pass
+        f.write_project_layout(config.fetch_project_config("ansible").paths)
 
 
 if __name__ == "hydra.main":

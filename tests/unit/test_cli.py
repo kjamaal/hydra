@@ -2,6 +2,8 @@ from click.testing import CliRunner
 from hydra.cli.main import hydra
 
 
+#TODO: check for corner-cases in all tests
+
 def test_hydra():
     run = CliRunner()
     result = run.invoke(hydra)

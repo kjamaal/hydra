@@ -18,19 +18,26 @@ click==8.1.8
     #   pip-tools
 idna==3.10
     # via requests
+iniconfig==2.0.0
+    # via pytest
 mock==5.1.0
     # via -r requirements-dev.in
 packaging==24.2
     # via
     #   -r requirements-dev.in
     #   build
+    #   pytest
 pip-tools==7.4.1
     # via -r requirements-dev.in
+pluggy==1.5.0
+    # via pytest
 pyproject-hooks==1.2.0
     # via
     #   -r requirements-dev.in
     #   build
     #   pip-tools
+pytest==8.3.4
+    # via -r requirements-dev.in
 requests==2.32.3
     # via -r requirements-dev.in
 urllib3==2.3.0

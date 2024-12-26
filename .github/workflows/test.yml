@@ -19,11 +19,9 @@ jobs:
           python-version: 3.11
       - name: checkout
         uses: actions/checkout@v2
-      - name: Remove existing .tox
-        run: |
-          rm -rf .tox/
       - name: run tox
         id: tox
+        #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
           tox_env: 'py311'

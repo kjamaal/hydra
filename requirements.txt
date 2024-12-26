@@ -6,3 +6,5 @@
 #
 click==8.1.7
     # via -r requirements.in
+dynaconf==3.2.6
+    # via -r requirements.in

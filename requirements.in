@@ -1,1 +1,2 @@
 click==8.1.7
+dynaconf==3.2.6

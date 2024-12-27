@@ -38,7 +38,7 @@ def ansible(ctx, yes_all):
         )
 
     if f.validate_dependencies() or prompt == "y" or yes_all:
-        f.write_project_layout(config.fetch_project_config("ansible")['paths'])
+        f.write_project_layout(config.fetch_project_config("ansible")["paths"])
 
 
 if __name__ == "hydra.main":

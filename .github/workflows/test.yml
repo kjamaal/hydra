@@ -47,7 +47,7 @@ jobs:
         #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
-          tox_env: '3.11-system'
+          tox_env: 'py3.11-system,py3.12-system,py3.13-system'
       - name: check for success
         run: |
           echo "System tests have passed: ${{steps.tox.outputs.success_flag}}"

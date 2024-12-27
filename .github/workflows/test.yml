@@ -7,11 +7,14 @@ on:
       - 'main'
   pull_request:
     types:
-      - created
+      - opened
+      - synchronize
+      - reopened
 jobs:
   unit:
     runs-on: ubuntu-latest
     name: unit tests
+    if: github.even_name == 'push'
     steps:
       - name: setup python
         uses: actions/setup-python@v2
@@ -24,11 +27,27 @@ jobs:
         #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
-          tox_env: 'py311'
+          tox_env: '3.11-unit'
       - name: check for success
         run: |
           echo "Units tests have passed: ${{steps.tox.outputs.success_flag}}"
-  #regression:
-  #integration:
-  #  runs-on: ubuntu-latest
-  #  if: github.event_name == 'pull_request'
+  system:
+    runs-on: ubuntu-latest
+    name: system tests
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: run tox
+        id: tox
+        #TODO: switch to commit sha
+        uses: paolorechia/pox@v1.0
+        with:
+          tox_env: '3.11-system'
+      - name: check for success
+        run: |
+          echo "System tests have passed: ${{steps.tox.outputs.success_flag}}"

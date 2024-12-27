@@ -14,6 +14,7 @@ jobs:
   unit:
     runs-on: ubuntu-latest
     name: unit tests
+    if: github.even_name == 'push'
     steps:
       - name: setup python
         uses: actions/setup-python@v2

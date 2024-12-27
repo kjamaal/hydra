@@ -30,7 +30,7 @@ jobs:
         #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
-          tox_env: "py${{atrix.version}}-unit"
+          tox_env: "py${{matrix.version}}-unit"
       - name: check for success
         run: |
           echo "Units tests have passed: ${{steps.tox.outputs.success_flag}}"
@@ -53,7 +53,7 @@ jobs:
         #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
-          tox_env: "py${{atrix.version}}-system"
+          tox_env: "py${{matrix.version}}-system"
       - name: check for success
         run: |
           echo "System tests have passed: ${{steps.tox.outputs.success_flag}}"

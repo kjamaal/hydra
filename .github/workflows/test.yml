@@ -15,11 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     name: unit tests
     if: github.even_name == 'push'
+    strategy:
+      matrix:
+        version: ["3.11", "3.12", "3.13"]
     steps:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: ${{matrix.version}}
       - name: checkout
         uses: actions/checkout@v2
       - name: run tox
@@ -27,7 +30,7 @@ jobs:
         #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
-          tox_env: '3.11-unit'
+          tox_env: "py${{matrix.version}}-unit"
       - name: check for success
         run: |
           echo "Units tests have passed: ${{steps.tox.outputs.success_flag}}"
@@ -35,11 +38,14 @@ jobs:
     runs-on: ubuntu-latest
     name: system tests
     if: github.event_name == 'pull_request'
+    strategy:
+      matrix:
+        version: ["3.11", "3.12", "3.13"]
     steps:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: ${{matrix.version}}
       - name: checkout
         uses: actions/checkout@v2
       - name: run tox
@@ -47,7 +53,7 @@ jobs:
         #TODO: switch to commit sha
         uses: paolorechia/pox@v1.0
         with:
-          tox_env: '3.11-system'
+          tox_env: "py${{matrix.version}}-system"
       - name: check for success
         run: |
           echo "System tests have passed: ${{steps.tox.outputs.success_flag}}"

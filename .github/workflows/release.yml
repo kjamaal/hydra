@@ -77,7 +77,7 @@ jobs:
       run: >-
         version="v$(cat hydra/__init__.py | sed 's/VERSION=//')"
         gh release create
-        echo "$verion" 
+        echo "$version" 
         --title echo "$version" 
         --repo '${{ github.repository }}' 
         --notes ""

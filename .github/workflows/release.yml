@@ -53,7 +53,7 @@ jobs:
   create-release:
     name: create release 
     needs:
-    - publish-to-testpypi
+    - build #for testing, change back to push-to-testpypi 
     runs-on: ubuntu-latest
     permissions:
       contents: write 

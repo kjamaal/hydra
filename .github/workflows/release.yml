@@ -64,16 +64,12 @@ jobs:
       with:
         name: python-package-distributions
         path: dist/
-    - name: install dependencies
-      run: |
-        pip install --upgrade cryptography
     - name: Sign the dists with Sigstore
-      uses: sigstore/gh-action-sigstore-python@v1.2.3
+      uses: sigstore/gh-action-sigstore-python@v3.0.0
       with:
         inputs: >-
           ./dist/*.tar.gz
           ./dist/*.whl
-        python-version: "3.11"
     - name: Create GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}

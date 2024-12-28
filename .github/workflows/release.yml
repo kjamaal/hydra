@@ -77,8 +77,8 @@ jobs:
       run: >-
         version="v$(cat hydra/__init__.py | sed 's/VERSION=//')"
         gh release create
-        "0.0.0.dev6"
-        --title "0.0.0.dev6"
+        $(echo "$verion") 
+        --title $(echo "$version") 
         --repo '${{ github.repository }}' 
         --notes ""
     - name: Upload artifact signatures to GitHub Release

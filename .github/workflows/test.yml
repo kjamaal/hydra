@@ -48,12 +48,13 @@ jobs:
           python-version: ${{matrix.version}}
       - name: checkout
         uses: actions/checkout@v2
+      - name: install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install tox tox-gh-actions
       - name: run tox
         id: tox
-        #TODO: switch to commit sha
-        uses: paolorechia/pox@v1.0
-        with:
-          tox_env: "py${{matrix.version}}-system"
+        run: tox -e "py${{matrix.version}}-system"
       - name: check for success
         run: |
           echo "System tests have passed: ${{steps.tox.outputs.success_flag}}"

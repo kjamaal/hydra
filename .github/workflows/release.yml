@@ -1,6 +1,7 @@
 name: Release Hydra
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master

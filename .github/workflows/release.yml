@@ -76,7 +76,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: >-
         gh release create
-        "$(cat hydra/__init__.py | sed 's/VERSION=//')"
+        -t "$(cat hydra/__init__.py | sed 's/VERSION=//')"
         --repo '${{ github.repository }}'
         --notes ""
     - name: Upload artifact signatures to GitHub Release

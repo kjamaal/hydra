@@ -14,7 +14,7 @@ jobs:
   unit:
     runs-on: ubuntu-latest
     name: unit tests
-    if: github.even_name == 'push' 
+    if: github.event_name == 'push' 
     strategy:
       matrix:
         version: ["3.11", "3.12", "3.13"]
@@ -31,13 +31,7 @@ jobs:
           python -m pip install tox tox-gh-actions
       - name: run tox
         id: tox
-        #TODO: switch to commit sha
-        uses: paolorechia/pox@v1.0
-        with:
-          tox_env: "py${{matrix.version}}-unit"
-      #- name: run tox
-      #  id: tox
-      #  run: tox -e "py${{matrix.version}}-unit"
+        run: tox -e "py${{matrix.version}}-unit"
       - name: check for success
         run: |
           echo "Units tests have passed: ${{steps.tox.outputs.success_flag}}"

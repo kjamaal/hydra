@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -75,7 +75,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: >-
-        version="v$(cat hydra/__init__.py | sed 's/VERSION=//')"
+        version="v$(cat hydra/__init__.py | sed 's/VERSION =//' | sed 's/\"//g')"
         gh release create 
         "$version" 
         --title "$version" 

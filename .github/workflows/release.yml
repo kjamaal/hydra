@@ -59,6 +59,7 @@ jobs:
       contents: write 
       id-token: write
     steps:
+    - uses: actions/checkout@v4
     - name: Download dists
       uses: actions/download-artifact@v3
       with:
@@ -75,7 +76,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: >-
         gh release create
-        '${{ github.ref_name }}'
+        "$(cat hydra/__init__.py | sed 's/VERSION=//')""
         --repo '${{ github.repository }}'
         --notes ""
     - name: Upload artifact signatures to GitHub Release

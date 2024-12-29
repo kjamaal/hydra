@@ -75,8 +75,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: >-
-        version="v$(cat hydra/__init__.py | sed 's/VERSION =//' | sed 's/\"//g')"
-        gh release create "$version" 
+        version="v$(cat hydra/__init__.py | sed 's/VERSION = //' | sed 's/\"//g')"
+        gh release create "$version"
         --title "$version" 
         --repo '${{ github.repository }}' 
         --notes ""

@@ -76,15 +76,11 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         version="v$(cat hydra/__init__.py | sed 's/VERSION = //' | sed 's/\"//g')"
-        test="test"
-        if [ -z "$version" ];then echo "version is unset or empty but not $test";fi
-        echo "::debug:: $version"
-        echo "::debug:: $(echo $test)"
-        echo "::debug:: debugging"
-        #gh release create "$version"
-        #--title "$version" 
-        #--repo '${{ github.repository }}' 
-        #--notes ""
+        gh release create
+        "$version"
+        --title "$version" 
+        --repo '${{ github.repository }}' 
+        --notes ""
     - name: Upload artifact signatures to GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}

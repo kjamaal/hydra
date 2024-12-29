@@ -76,7 +76,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: >-
         version="v$(cat hydra/__init__.py | sed 's/VERSION = //' | sed 's/\"//g')"
+        test="test"
         echo "::debug:: $version"
+        echo "::debug:: $test
         echo "::debug:: debugging"
         #gh release create "$version"
         #--title "$version" 

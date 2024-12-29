@@ -77,6 +77,8 @@ jobs:
       run: >-
         version="v$(cat hydra/__init__.py | sed 's/VERSION = //' | sed 's/\"//g')"
         test="test"
+        if [ -z "$version" ]; then
+          echo "version is unset or empty but not $test"
         echo "::debug:: $version"
         echo "::debug:: $(echo $test)"
         echo "::debug:: debugging"

@@ -96,7 +96,7 @@ jobs:
       runs-on: ubuntu-latest
       environment:
         name: testpypi
-        url: https://test.pypi.org/p/hydra-devops
+        #url: https://test.pypi.org/p/hydra-devops
       permissions:
         id-token: write
       steps:

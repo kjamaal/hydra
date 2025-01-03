@@ -86,7 +86,7 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
         gh release upload "v$(cat hydra/__init__.py | sed 's/VERSION = //' | sed 's/\"//g')" dist/** \
-        --repo '{{ github.repository }}'
+        --repo '${{ github.repository }}'
 
   publish-to-testpypi:
       name: Publish to TestPyPI
